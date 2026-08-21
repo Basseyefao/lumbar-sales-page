@@ -2109,6 +2109,31 @@ img[loading="lazy"]{ background:var(--bg-light); }
       return;
     }
 
+
+
+           // Capture order + customer data for the thank-you page pixel
+    // (Netlify does a full page reload, so this is how we carry data across)
+    const selectedPack = document.querySelector('.pack-card.is-selected');
+    const packTotal = parseInt(selectedPack.dataset.total, 10);
+    const packUnits = selectedPack.querySelector('.pack-units').textContent.replace(/\s+/g,' ').trim();
+
+    // Order value -> URL params (robust, doesn't depend on storage working)
+    const trackingParams = new URLSearchParams({
+      value: packTotal,
+      pack: packUnits,
+      content: 'Mesh Lumbar Back Support'
+    });
+    orderForm.action = '/thank-you.html?' + trackingParams.toString();
+
+    // Customer PII -> sessionStorage only (kept out of URLs/server logs)
+    sessionStorage.setItem('leadData', JSON.stringify({
+      fullName: nameInput.value.trim(),
+      phone: phoneInput.value.trim(),
+      city: cityInput.value.trim(),
+      state: stateInput.value
+    }));
+       
+       
     // Valid — let the browser submit natively to Netlify, which redirects to /thank-you.html
     const submitBtn = document.getElementById('submitOrderBtn');
     submitBtn.textContent = 'Submitting...';
