@@ -71,7 +71,7 @@ src="https://www.facebook.com/tr?id=1832831950619445&ev=PageView&noscript=1"/></
   "offers": {
     "@type": "Offer",
     "priceCurrency": "NGN",
-    "price": "24500",
+    "price": "20500",
     "availability": "https://schema.org/InStock",
     "url": "https://yourdomain.com/"
   },
@@ -635,7 +635,8 @@ p.section-sub{
 .qty-value{ width:60px; text-align:center; font-weight:700; font-size:17px; }
 
 .pack-selector{ display:grid; grid-template-columns:1fr; gap:12px; }
-@media(min-width:520px){ .pack-selector{ grid-template-columns:repeat(3,1fr); } }
+@media(min-width:480px){ .pack-selector{ grid-template-columns:repeat(2,1fr); } }
+@media(min-width:900px){ .pack-selector{ grid-template-columns:repeat(4,1fr); } }
 .pack-card{
   position:relative; border:1.5px solid var(--border); border-radius:14px; background:var(--bg-light);
   padding:18px 14px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:4px;
@@ -648,10 +649,15 @@ p.section-sub{
   background:var(--cta); color:#fff; font-size:10.5px; font-weight:700; padding:3px 10px;
   border-radius:100px; white-space:nowrap;
 }
+.pack-badge-warn{ background:var(--danger); }
 .pack-units{ font-family:var(--font-heading); font-weight:800; font-size:20px; color:var(--primary); margin-top:6px; }
 .pack-units small{ font-size:11px; font-weight:700; color:var(--success); display:block; margin-top:2px; letter-spacing:0.02em; }
+.pack-card[data-delivery="6000"] .pack-units small{ color:var(--text-muted); }
 .pack-desc{ font-size:11.5px; color:var(--text-muted); margin-bottom:6px; }
 .pack-price{ font-family:var(--font-heading); font-weight:800; font-size:17px; color:var(--cta); }
+.pack-perunit{ font-size:10.5px; color:var(--text-muted); margin-top:1px; }
+.pack-card[data-delivery="6000"] .pack-perunit{ color:var(--danger); font-weight:700; }
+.pack-save{ font-size:10.5px; color:var(--success); font-weight:700; margin-top:4px; }
 
 .price-summary{
   background:var(--bg-light); border-radius:14px; padding:18px 20px; margin:20px 0;
@@ -783,6 +789,15 @@ p.section-sub{
 }
 .countdown-strip svg{ width:16px; height:16px; flex-shrink:0; }
 .countdown-timer{ font-family:var(--font-heading); font-weight:800; letter-spacing:0.02em; }
+.countdown-strip .countdown-note{ font-weight:500; opacity:0.9; }
+
+.delivery-urgency-note{
+  display:flex; align-items:center; gap:8px; background:#FFF7ED; border:1px solid #FED7AA;
+  border-radius:12px; padding:12px 16px; margin:0 0 20px; font-size:13.5px; color:#9A3412;
+  font-weight:600; line-height:1.5;
+}
+.delivery-urgency-note svg{ width:20px; height:20px; color:var(--cta); flex-shrink:0; }
+.delivery-urgency-note b{ font-family:var(--font-heading); }
 
 /* scroll reveal generic */
 .reveal{ opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease; }
@@ -824,7 +839,7 @@ img[loading="lazy"]{ background:var(--bg-light); }
       LumbarPro <span style="color:#94A3B8;font-weight:500;">NG</span>
     </div>
     <div class="header-price">
-      <span class="amount">From ₦24,500</span>
+      <span class="amount">From ₦25,500</span>
       <span class="label">Pay on Delivery</span>
     </div>
     <a href="#order-form" class="btn btn-cta header-cta">Order Now</a>
@@ -836,8 +851,9 @@ img[loading="lazy"]{ background:var(--bg-light); }
      ============================================ -->
 <div class="countdown-strip">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-  <span>Discount price ends in:</span>
+  <span>FREE Delivery ends in:</span>
   <span class="countdown-timer" id="countdownTimer">02:14:59</span>
+  <span class="countdown-note">— after that, delivery costs ₦7,500</span>
 </div>
 
 <!-- ============================================
@@ -858,11 +874,11 @@ img[loading="lazy"]{ background:var(--bg-light); }
         <p class="hero-sub reveal">Millions of Nigerians who sit for hours every day are silently damaging their spine without knowing it. The Mesh Lumbar Back Support gives your lower back the support ordinary chairs were never designed to give.</p>
 
         <div class="hero-price-tag reveal">
-          <span class="price">₦24,500</span>
+          <span class="price">₦25,500</span>
           <span class="was">2 + 1 FREE</span>
           <span class="save">Free Delivery</span>
         </div>
-        <p style="color:#94A3B8;font-size:14px;margin-top:-20px;margin-bottom:24px;">Buy 2, get 1 free — bigger packs save you even more. <a href="#order-form" style="color:#7DD3FC;font-weight:600;">See all pack prices ↓</a></p>
+        <p style="color:#94A3B8;font-size:14px;margin-top:-20px;margin-bottom:24px;">Buy 2, get 1 free — bigger packs cost even less per piece. Just want to try one? Single pieces are ₦20,500 (+ ₦6,000 delivery). <a href="#order-form" style="color:#7DD3FC;font-weight:600;">See all pack prices ↓</a></p>
 
         <div class="hero-cta-row reveal">
           <a href="#order-form" class="btn btn-cta">Order Now — Pay On Delivery</a>
@@ -1399,7 +1415,7 @@ img[loading="lazy"]{ background:var(--bg-light); }
           Can I order more than one?
           <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Yes. We sell in packs: 2+1 free, 4+1 free, or 10+1 free — bigger packs come with a better price per unit. Many customers buy the 4-pack to share between office, home, and car. For orders larger than 10, contact us directly for bulk pricing.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. You can start with a single piece to try it, or save more with our packs: 2+1 free, 4+1 free, or 10+2 free — bigger packs come with a better price per piece and free delivery. Many customers buy the 4-pack to share between office, home, and car. For orders larger than 10, contact us directly for bulk pricing.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
@@ -1580,10 +1596,17 @@ img[loading="lazy"]{ background:var(--bg-light); }
             </div>
 
             <div class="form-row two">
+              <div class="field" id="field-email">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com">
+              </div>
               <div class="field" id="field-altphone">
                 <label for="altPhone">Alternative Phone</label>
-                <input type="tel" id="altPhone" name="altPhone" placeholder="08012345678 (optional)">
+                <input type="tel" id="altPhone" name="altPhone" placeholder="08012345678">
               </div>
+            </div>
+
+            <div class="form-row two">
               <div class="field" id="field-state">
                 <label for="state">State <span class="req">*</span></label>
                 <select id="state" name="state" required>
@@ -1601,14 +1624,14 @@ img[loading="lazy"]{ background:var(--bg-light); }
                 </select>
                 <span class="field-error">Please select your state</span>
               </div>
-            </div>
-
-            <div class="form-row two">
               <div class="field" id="field-city">
                 <label for="city">City / Town <span class="req">*</span></label>
                 <input type="text" id="city" name="city" placeholder="e.g. Ikeja" required>
                 <span class="field-error">Please enter your city or town</span>
               </div>
+            </div>
+
+            <div class="form-row">
               <div class="field" id="field-landmark">
                 <label for="landmark">Nearest Landmark</label>
                 <input type="text" id="landmark" name="landmark" placeholder="e.g. Near First Bank">
@@ -1625,42 +1648,61 @@ img[loading="lazy"]{ background:var(--bg-light); }
 
             <div class="form-row">
               <div class="field">
-                <label>Choose Your Pack <span class="req">*</span></label>
-                <div class="pack-selector" id="packSelector">
-                  <button type="button" class="pack-card" data-pack="1" data-total="24500" data-save="0">
-                    <span class="pack-units">2 <small>+ 1 FREE</small></span>
-                    <span class="pack-desc">For Office or Home</span>
-                    <span class="pack-price">₦24,500</span>
-                  </button>
-                  <button type="button" class="pack-card is-selected" data-pack="2" data-total="43500" data-save="1500">
-                    <span class="pack-badge">Best Value</span>
-                    <span class="pack-units">4 <small>+ 1 FREE</small></span>
-                    <span class="pack-desc">For Family or Office Team</span>
-                    <span class="pack-price">₦43,500</span>
-                  </button>
-                  <button type="button" class="pack-card" data-pack="3" data-total="99500" data-save="9000">
-                    <span class="pack-units">10 <small>+ 1 FREE</small></span>
-                    <span class="pack-desc">For Bulk / Resale</span>
-                    <span class="pack-price">₦99,500</span>
-                  </button>
-                </div>
-                <input type="hidden" name="pack" id="packHidden" value="4 plus 1 FREE - N43,500">
+                <label for="notes">Order Notes</label>
+                <input type="text" id="notes" name="notes" placeholder="Optional — color, time to call, etc.">
               </div>
             </div>
 
             <div class="form-row">
               <div class="field">
-                <label for="notes">Order Notes</label>
-                <input type="text" id="notes" name="notes" placeholder="Optional — color, time to call, etc.">
+                <label>Choose Your Pack <span class="req">*</span></label>
+                <div class="pack-selector" id="packSelector">
+                  <button type="button" class="pack-card" data-pack="1" data-total="20500" data-delivery="6000" data-save="0" data-perunit="20500">
+                    <span class="pack-badge pack-badge-warn">Delivery Fee Applies</span>
+                    <span class="pack-units">1 <small>piece only</small></span>
+                    <span class="pack-desc">Try It Out — No Free Item</span>
+                    <span class="pack-price">₦20,500</span>
+                    <span class="pack-perunit">+ ₦6,000 delivery (paid on delivery)</span>
+                  </button>
+                  <button type="button" class="pack-card" data-pack="2" data-total="25500" data-delivery="0" data-save="0" data-perunit="8500">
+                    <span class="pack-badge">Popular</span>
+                    <span class="pack-units">2 <small>+ 1 FREE</small></span>
+                    <span class="pack-desc">For Office or Home</span>
+                    <span class="pack-price">₦25,500</span>
+                    <span class="pack-perunit">₦8,500 / piece</span>
+                  </button>
+                  <button type="button" class="pack-card is-selected" data-pack="3" data-total="38500" data-delivery="0" data-save="4000" data-perunit="7700">
+                    <span class="pack-badge">Best Value</span>
+                    <span class="pack-units">4 <small>+ 1 FREE</small></span>
+                    <span class="pack-desc">For Family or Office Team</span>
+                    <span class="pack-price">₦38,500</span>
+                    <span class="pack-perunit">₦7,700 / piece</span>
+                    <span class="pack-save">Save ₦4,000</span>
+                  </button>
+                  <button type="button" class="pack-card" data-pack="4" data-total="80500" data-delivery="0" data-save="21500" data-perunit="6708">
+                    <span class="pack-units">10 <small>+ 2 FREE</small></span>
+                    <span class="pack-desc">For Bulk / Resale</span>
+                    <span class="pack-price">₦80,500</span>
+                    <span class="pack-perunit">₦6,708 / piece</span>
+                    <span class="pack-save">Save ₦21,500</span>
+                  </button>
+                </div>
+                <input type="hidden" name="pack" id="packHidden" value="4 plus 1 FREE - N38,500">
               </div>
             </div>
 
             <div class="price-summary">
               <div>
                 <span class="label">Total Amount</span>
-                <span class="save-note" id="saveNote">You save ₦1,500 + Free Delivery</span>
+                <span class="save-note" id="saveNote">You save ₦4,000 + Free Delivery</span>
               </div>
-              <span class="value" id="totalPrice">₦43,500</span>
+              <span class="value" id="totalPrice">₦38,500</span>
+            </div>
+
+            <div class="delivery-urgency-note" id="deliveryUrgencyNote">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-1a2 2 0 0 1 .5-1.3L5 10l1.5-3h11L19 10l1.5 2.7a2 2 0 0 1 .5 1.3v1a2 2 0 0 1-2 2"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/></svg>
+              <span id="deliveryUrgencyFree"><b>FREE delivery</b> if you order within <span id="orderFormCountdown">02:14:59</span> — after that, delivery is ₦7,500 (still paid on delivery, not now).</span>
+              <span id="deliveryUrgencyFee" style="display:none;"><b>Note:</b> single-piece orders don't qualify for free delivery — a flat ₦6,000 delivery fee applies, paid on delivery along with your item.</span>
             </div>
 
             <p style="font-size:13px;color:var(--text-muted);margin-top:-12px;margin-bottom:18px;">Need more than 10 units? <a href="https://wa.me/2349061956470?text=Hello%2C%20I%20want%20to%20place%20a%20bulk%20order" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;">Contact us for bulk pricing →</a></p>
@@ -1687,7 +1729,7 @@ img[loading="lazy"]{ background:var(--bg-light); }
 <section class="final-cta">
   <div class="container">
     <h2 class="reveal">Your Back Has Waited Long Enough. Order Today.</h2>
-    <p class="reveal">From ₦24,500 for 2 + 1 FREE. Delivered to your door for free. Pay cash on delivery. No risk.</p>
+    <p class="reveal">From ₦25,500 for 2 + 1 FREE with free delivery — bigger packs cost even less per piece. Pay cash on delivery. No risk.</p>
     <a href="#order-form" class="btn btn-cta reveal">Order Now — Pay On Delivery</a>
     <div class="stock-warning reveal">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
@@ -1751,7 +1793,7 @@ img[loading="lazy"]{ background:var(--bg-light); }
 </button>
 
 <div class="float-order-bar" id="floatOrderBar">
-  <div class="fo-price"><span class="amount">From ₦24,500</span><span class="label">Free Delivery + Pay On Delivery</span></div>
+  <div class="fo-price"><span class="amount">From ₦25,500</span><span class="label">Free Delivery + Pay On Delivery</span></div>
   <a href="#order-form" class="btn btn-cta">Order Now</a>
 </div>
 
@@ -1975,6 +2017,8 @@ img[loading="lazy"]{ background:var(--bg-light); }
      10. COUNTDOWN TIMER
      =========================================================== */
   const countdownEl = document.getElementById('countdownTimer');
+  const countdownFormEl = document.getElementById('orderFormCountdown');
+  let countdownInterval; // declared early so updateCountdown() never hits a TDZ error on its first (immediate) call
   function getCountdownTarget(){
     const stored = sessionStorage.getItem('countdownTarget');
     if(stored) return parseInt(stored, 10);
@@ -1988,11 +2032,13 @@ img[loading="lazy"]{ background:var(--bg-light); }
     const h = Math.floor(diff / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
     const s = Math.floor((diff % 60000) / 1000);
-    countdownEl.textContent = String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+    const formatted = String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+    countdownEl.textContent = formatted;
+    if(countdownFormEl) countdownFormEl.textContent = formatted;
     if(diff <= 0) clearInterval(countdownInterval);
   }
   updateCountdown();
-  const countdownInterval = setInterval(updateCountdown, 1000);
+  countdownInterval = setInterval(updateCountdown, 1000);
 
   /* ===========================================================
      11. STOCK COUNTER (pseudo-dynamic, persists per session)
@@ -2049,16 +2095,31 @@ img[loading="lazy"]{ background:var(--bg-light); }
   const packHidden = document.getElementById('packHidden');
   const totalPriceEl = document.getElementById('totalPrice');
   const saveNoteEl = document.getElementById('saveNote');
+  const deliveryUrgencyFreeEl = document.getElementById('deliveryUrgencyFree');
+  const deliveryUrgencyFeeEl = document.getElementById('deliveryUrgencyFee');
 
   function selectPack(card){
     packCards.forEach(c => c.classList.remove('is-selected'));
     card.classList.add('is-selected');
-    const total = parseInt(card.dataset.total, 10);
-    const save = parseInt(card.dataset.save, 10);
+    const price = parseInt(card.dataset.total, 10);
+    const delivery = parseInt(card.dataset.delivery, 10) || 0;
+    const save = parseInt(card.dataset.save, 10) || 0;
+    const grandTotal = price + delivery;
     const units = card.querySelector('.pack-units').textContent.replace(/\s+/g,' ').trim();
-    totalPriceEl.textContent = '₦' + total.toLocaleString();
-    saveNoteEl.textContent = save > 0 ? 'You save ₦' + save.toLocaleString() + ' + Free Delivery' : 'Free Delivery Included';
-    packHidden.value = units.replace(/\s+/g,' ').replace('+','plus') + ' - N' + total.toLocaleString();
+
+    totalPriceEl.textContent = '₦' + grandTotal.toLocaleString();
+    packHidden.value = units.replace(/\s+/g,' ').replace('+','plus') + ' - N' + price.toLocaleString() + (delivery > 0 ? ' + N' + delivery.toLocaleString() + ' delivery' : '');
+
+    if(delivery > 0){
+      // Tier 1: flat delivery fee always applies, no countdown discount, no "save" badge
+      saveNoteEl.textContent = '+ ₦' + delivery.toLocaleString() + ' delivery fee (paid on delivery)';
+      deliveryUrgencyFreeEl.style.display = 'none';
+      deliveryUrgencyFeeEl.style.display = 'inline';
+    } else {
+      saveNoteEl.textContent = save > 0 ? 'You save ₦' + save.toLocaleString() + ' + Free Delivery' : 'Free Delivery Included';
+      deliveryUrgencyFeeEl.style.display = 'none';
+      deliveryUrgencyFreeEl.style.display = 'inline';
+    }
   }
 
   packCards.forEach(function(card){
