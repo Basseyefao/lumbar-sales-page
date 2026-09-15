@@ -10,89 +10,122 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
+<script>
+!function(f,b,e,v,n,t,s)
+{
+  if(f.fbq)return;
+  n=f.fbq=function(){
+    n.callMethod ?
+    n.callMethod.apply(n,arguments) :
+    n.queue.push(arguments)
+  };
+
+  if(!f._fbq)f._fbq=n;
+  n.push=n;
+  n.loaded=!0;
+  n.version='2.0';
+  n.queue=[];
+
+  t=b.createElement(e);
+  t.async=!0;
+  t.src=v;
+
+  s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s);
+
+}(window, document, 'script',
+  'https://connect.facebook.net/en_US/fbevents.js'
+);
 
 
-     <script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
+// ==========================================
+// ORDER DATA
+// ==========================================
 
-// Order value/pack — read from the URL the sales page built for us
 const urlParams = new URLSearchParams(window.location.search);
-const orderValue = parseInt(urlParams.get('value'), 10) || 39500;
-const contentName = urlParams.get('content') || 'Mesh Lumbar Back Support';
 
-// Customer details — read from sessionStorage the sales page set
+const orderValue =
+  parseFloat(urlParams.get('value')) || 39500;
+
+const contentName =
+  urlParams.get('content') || 'Mesh Lumbar Back Support';
+
+
+// ==========================================
+// CUSTOMER DATA
+// ==========================================
+
 let lead = {};
-try { lead = JSON.parse(sessionStorage.getItem('leadData')) || {}; } catch(err) {}
 
-const nameParts = (lead.fullName || '').split(' ');
-const firstName = nameParts[0] || '';
-const lastName = nameParts.slice(1).join(' ') || '';
-let phone = (lead.phone || '').replace(/\D/g, '');
-if (phone.startsWith('0')) phone = '234' + phone.slice(1);
+try {
+  lead = JSON.parse(
+    sessionStorage.getItem('leadData')
+  ) || {};
+} catch (err) {
+  console.error('Could not read leadData:', err);
+}
+
+const nameParts =
+  (lead.fullName || '').trim().split(/\s+/);
+
+const firstName =
+  nameParts[0] || '';
+
+const lastName =
+  nameParts.slice(1).join(' ') || '';
+
+const email =
+  lead.email || '';
+
+let phone =
+  (lead.phone || '').replace(/\D/g, '');
+
+if (phone.startsWith('0')) {
+  phone = '234' + phone.slice(1);
+}
+
+
+// ==========================================
+// INITIALIZE PIXEL 1
+// ==========================================
 
 fbq('init', '1832831950619445', {
   fn: firstName,
+  ln: lastName,
   ph: phone,
-  email: email,
+  em: email,
   ct: lead.city || '',
   st: lead.state || '',
   country: 'ng'
 });
 
-fbq('track', 'PageView');
-fbq('track', 'Purchase', {
-  content_name: contentName,
-  content_category: 'Health & Wellness',
-  currency: 'NGN',
-  value: orderValue
-});
 
-sessionStorage.removeItem('leadData');
-</script>
-
-<noscript>
-<img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1832831950619445&ev=Purchase&noscript=1"/>
-</noscript>
-
-
-
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
-// Order value/pack — read from the URL the sales page built for us
-const urlParams = new URLSearchParams(window.location.search);
-const orderValue = parseInt(urlParams.get('value'), 10) || 39500;
-const contentName = urlParams.get('content') || 'Mesh Lumbar Back Support';
-
-// Customer details — read from sessionStorage the sales page set
-let lead = {};
-try { lead = JSON.parse(sessionStorage.getItem('leadData')) || {}; } catch(err) {}
-
-const nameParts = (lead.fullName || '').split(' ');
-const firstName = nameParts[0] || '';
-const lastName = nameParts.slice(1).join(' ') || '';
-let phone = (lead.phone || '').replace(/\D/g, '');
-if (phone.startsWith('0')) phone = '234' + phone.slice(1);
+// ==========================================
+// INITIALIZE PIXEL 2
+// ==========================================
 
 fbq('init', '1081718088153259', {
   fn: firstName,
+  ln: lastName,
   ph: phone,
-  email: email,
+  em: email,
   ct: lead.city || '',
   st: lead.state || '',
   country: 'ng'
 });
 
+
+// ==========================================
+// PAGE VIEW
+// ==========================================
+
 fbq('track', 'PageView');
+
+
+// ==========================================
+// PURCHASE
+// ==========================================
+
 fbq('track', 'Purchase', {
   content_name: contentName,
   content_category: 'Health & Wellness',
@@ -100,12 +133,32 @@ fbq('track', 'Purchase', {
   value: orderValue
 });
 
+
+// ==========================================
+// CLEAN UP
+// ==========================================
+
 sessionStorage.removeItem('leadData');
+
 </script>
 
+
 <noscript>
-<img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1081718088153259&ev=Purchase&noscript=1"/>
+
+  <img
+    height="1"
+    width="1"
+    style="display:none"
+    src="https://www.facebook.com/tr?id=1832831950619445&ev=Purchase&noscript=1"
+  />
+
+  <img
+    height="1"
+    width="1"
+    style="display:none"
+    src="https://www.facebook.com/tr?id=1081718088153259&ev=Purchase&noscript=1"
+  />
+
 </noscript>
 
 
