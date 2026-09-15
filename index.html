@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -583,6 +584,43 @@ p.section-sub{
 .testi-author-info span{ font-size:12.5px; color:var(--text-muted); }
 
 /* ============================================
+   WHATSAPP PROOF SECTION
+   ============================================ */
+.proof-spotlight{
+  max-width:420px; margin:0 auto 44px; border-radius:var(--radius-card);
+  overflow:hidden; box-shadow:var(--shadow-soft); cursor:pointer; border:1px solid var(--border);
+}
+.proof-spotlight img{ width:100%; display:block; }
+.proof-spotlight-tag{
+  text-align:center; font-size:13px; font-weight:700; color:var(--success);
+  display:flex; align-items:center; justify-content:center; gap:6px; margin-bottom:16px;
+}
+.proof-spotlight-tag svg{ width:16px; height:16px; }
+.proof-grid{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+}
+@media(min-width:768px){ .proof-grid{ grid-template-columns:repeat(3,1fr); gap:18px; } }
+.proof-item{
+  position:relative; border-radius:16px; overflow:hidden; cursor:pointer;
+  box-shadow:var(--shadow-card); border:1px solid var(--border); background:#fff;
+}
+.proof-item .proof-thumb-wrap{ aspect-ratio:3/4; overflow:hidden; }
+.proof-item img{ width:100%; height:100%; object-fit:cover; object-position:top; transition:transform .4s ease; }
+.proof-item:hover img{ transform:scale(1.06); }
+.proof-item .proof-caption{
+  padding:12px 14px 14px; font-size:13px; font-weight:600; color:var(--text); line-height:1.4;
+}
+.proof-item .proof-caption span{
+  display:block; font-size:11.5px; font-weight:600; color:var(--accent); text-transform:uppercase;
+  letter-spacing:0.03em; margin-bottom:4px;
+}
+.proof-zoom-hint{
+  position:absolute; top:10px; right:10px; width:28px; height:28px; border-radius:50%;
+  background:rgba(15,23,42,0.55); display:flex; align-items:center; justify-content:center;
+}
+.proof-zoom-hint svg{ width:14px; height:14px; color:#fff; }
+
+/* ============================================
    FAQ
    ============================================ */
 .faq-list{ max-width:760px; margin:0 auto; }
@@ -951,7 +989,7 @@ img[loading="lazy"]{ background:var(--bg-light); }
 
         <div class="hero-price-tag reveal">
           <span class="price">₦25,500</span>
-          <span class="was">2 + 1 FREE</span>
+          <span class="save" style="margin-left:0;">2 + 1 FREE</span>
           <span class="save">Free Delivery</span>
         </div>
         <p style="color:#94A3B8;font-size:14px;margin-top:-20px;margin-bottom:24px;">Buy 2, get 1 free — bigger packs cost even less per piece. Just want to try one? Single pieces are ₦20,500 (+ ₦6,000 delivery). <a href="#order-form" style="color:#7DD3FC;font-weight:600;">See all pack prices ↓</a></p>
@@ -982,6 +1020,74 @@ img[loading="lazy"]{ background:var(--bg-light); }
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     WHATSAPP PROOF — REAL CONVERSATIONS
+     (Placed right after hero — skepticism gets handled before anything else)
+     ============================================ -->
+<section class="section-light">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">We Know You're Skeptical — Good.</div>
+      <h2 class="section-title">Before You Read Any Further, See The Actual Conversations</h2>
+      <p class="section-sub">No scripts, no actors. These are real WhatsApp chats with real customers asking the exact questions you're probably asking right now.</p>
+    </div>
+
+    <div class="proof-spotlight reveal" data-lightbox="images/proof/chiamaka-real-photo-review.jpg">
+      <img src="images/proof/chiamaka-real-photo-review.jpg" alt="Chiamaka O., a real customer care agent in Lagos, at her desk with the mesh lumbar back support on her office chair, alongside her written review" loading="lazy">
+    </div>
+    <div class="proof-spotlight-tag">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      Real photo. Real desk. Real reviewer — not a stock image.
+    </div>
+
+    <div class="proof-grid">
+      <div class="proof-item reveal" data-lightbox="images/proof/chat-skeptical-pay-on-delivery.jpg">
+        <div class="proof-thumb-wrap">
+          <img src="images/proof/chat-skeptical-pay-on-delivery.jpg" alt="WhatsApp chat: skeptical customer asking if the product matches the picture, told about Pay on Delivery" loading="lazy">
+        </div>
+        <div class="proof-zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.35-4.35"/></svg></div>
+        <div class="proof-caption"><span>"Will I get scammed?"</span>Nervous about ordering online — reassured with Pay on Delivery, so nothing is paid until the item is in hand.</div>
+      </div>
+
+      <div class="proof-item reveal" data-lightbox="images/proof/chat-driver-car-seat.jpg">
+        <div class="proof-thumb-wrap">
+          <img src="images/proof/chat-driver-car-seat.jpg" alt="WhatsApp chat: a driver asking if the lumbar support works on a car seat for 8-10 hour shifts" loading="lazy">
+        </div>
+        <div class="proof-zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.35-4.35"/></svg></div>
+        <div class="proof-caption"><span>"Does it fit a car seat?"</span>A driver doing 8-10 hours a day confirms it straps in, and can even be moved to another chair.</div>
+      </div>
+
+      <div class="proof-item reveal" data-lightbox="images/proof/chat-tailor-plastic-chair.jpg">
+        <div class="proof-thumb-wrap">
+          <img src="images/proof/chat-tailor-plastic-chair.jpg" alt="WhatsApp chat: a tailor asking if the support works on a normal plastic chair while sewing" loading="lazy">
+        </div>
+        <div class="proof-zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.35-4.35"/></svg></div>
+        <div class="proof-caption"><span>"Will it work on my plastic chair?"</span>A tailor who sits at her machine all day checks compatibility before buying — confirmed yes.</div>
+      </div>
+
+      <div class="proof-item reveal" data-lightbox="images/proof/chat-bulk-nationwide-delivery.jpg">
+        <div class="proof-thumb-wrap">
+          <img src="images/proof/chat-bulk-nationwide-delivery.jpg" alt="WhatsApp chat: customer asking about bulk pricing and delivery outside Lagos, confirmed nationwide delivery" loading="lazy">
+        </div>
+        <div class="proof-zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.35-4.35"/></svg></div>
+        <div class="proof-caption"><span>"Do you deliver outside Lagos?"</span>Confirmed nationwide delivery, even for a bulk order — same answer we give every customer.</div>
+      </div>
+
+      <div class="proof-item reveal" data-lightbox="images/proof/chat-repeat-customer-followup.jpg">
+        <div class="proof-thumb-wrap">
+          <img src="images/proof/chat-repeat-customer-followup.jpg" alt="WhatsApp follow-up chat: customer confirms comfort improved and says they'll buy a second one for home" loading="lazy">
+        </div>
+        <div class="proof-zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.35-4.35"/></svg></div>
+        <div class="proof-caption"><span>"Does it actually help, days later?"</span>Followed up after delivery — customer confirms real comfort and decides to buy a second one for home.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:36px;">
+      <a href="#order-form" class="btn btn-cta">Okay, I'm Convinced — Order Now</a>
     </div>
   </div>
 </section>
@@ -1362,7 +1468,7 @@ img[loading="lazy"]{ background:var(--bg-light); }
         </div>
         <p>"I work as a customer care agent in Lagos and I sit for 8 hours straight. My lower back has been giving me trouble for almost a year. After one week of using this, I finish work now without that pain. Highly recommend."</p>
         <div class="testi-author">
-          <div class="testi-avatar">CO</div>
+          <img src="images/proof/chiamaka-real-photo-review.jpg" alt="Chiamaka O." class="testi-avatar" style="object-fit:cover;object-position:top;background:none;">
           <div class="testi-author-info"><b>Chiamaka O.</b><span>Lagos • Customer Care Agent</span></div>
         </div>
       </div>
@@ -1649,6 +1755,15 @@ img[loading="lazy"]{ background:var(--bg-light); }
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> We call within 24 hours to confirm your order</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg> Delivered nationwide, anywhere in Nigeria</li>
         </ul>
+
+        <div style="margin-top:28px;padding:18px 20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:14px;">
+          <p style="color:#fff;font-weight:700;font-size:14.5px;margin-bottom:6px;">Prefer to just chat instead of filling a form?</p>
+          <p style="color:#94A3B8;font-size:13.5px;margin-bottom:14px;line-height:1.5;">Most of our customers order this way — tell us what you need on WhatsApp and we'll sort the rest.</p>
+          <a href="https://wa.me/2349061956470?text=Hello%2C%20I%20want%20to%20order%20the%20Mesh%20Lumbar%20Back%20Support" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;width:100%;justify-content:center;" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.84.5 3.55 1.36 5.02L2 22l5.25-1.46a9.86 9.86 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.06c-1.55 0-3.05-.42-4.36-1.21l-.31-.18-3.12.87.83-3.04-.2-.32a8.06 8.06 0 0 1-1.25-4.27c0-4.46 3.63-8.09 8.41-8.09 4.46 0 8.09 3.63 8.09 8.09 0 4.46-3.63 8.15-8.09 8.15z"/></svg>
+            Order On WhatsApp Instead
+          </a>
+        </div>
       </div>
 
       <div class="order-form-card reveal-right">
@@ -1673,12 +1788,12 @@ img[loading="lazy"]{ background:var(--bg-light); }
 
             <div class="form-row two">
               <div class="field" id="field-email">
-                <label for="email">Email Address<span class="req">*</span></label>
-                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                <label for="email">Email Address <span style="color:var(--text-muted);font-weight:500;">(optional)</span></label>
+                <input type="email" id="email" name="email" placeholder="you@example.com">
               </div>
               <div class="field" id="field-altphone">
-                <label for="altPhone">Alternative Phone <span class="req">*</span> </label>
-                <input type="tel" id="altPhone" name="altPhone" placeholder="08012345678" required>
+                <label for="altPhone">Alternative Phone <span style="color:var(--text-muted);font-weight:500;">(optional)</span></label>
+                <input type="tel" id="altPhone" name="altPhone" placeholder="08012345678">
               </div>
             </div>
 
@@ -1740,14 +1855,14 @@ img[loading="lazy"]{ background:var(--bg-light); }
                     <span class="pack-price">₦20,500</span>
                     <span class="pack-perunit">+ ₦6,000 delivery (paid on delivery)</span>
                   </button>
-                  <button type="button" class="pack-card" data-pack="2" data-total="25500" data-delivery="0" data-save="0" data-perunit="8500">
+                  <button type="button" class="pack-card is-selected" data-pack="2" data-total="25500" data-delivery="0" data-save="0" data-perunit="8500">
                     <span class="pack-badge">Popular</span>
                     <span class="pack-units">2 <small>+ 1 FREE</small></span>
                     <span class="pack-desc">For Office or Home</span>
                     <span class="pack-price">₦25,500</span>
                     <span class="pack-perunit">₦8,500 / piece</span>
                   </button>
-                  <button type="button" class="pack-card is-selected" data-pack="3" data-total="38500" data-delivery="0" data-save="4000" data-perunit="7700">
+                  <button type="button" class="pack-card" data-pack="3" data-total="38500" data-delivery="0" data-save="4000" data-perunit="7700">
                     <span class="pack-badge">Best Value</span>
                     <span class="pack-units">4 <small>+ 1 FREE</small></span>
                     <span class="pack-desc">For Family or Office Team</span>
@@ -1763,16 +1878,16 @@ img[loading="lazy"]{ background:var(--bg-light); }
                     <span class="pack-save">Save ₦21,500</span>
                   </button>
                 </div>
-                <input type="hidden" name="pack" id="packHidden" value="4 plus 1 FREE - N38,500">
+                <input type="hidden" name="pack" id="packHidden" value="2 plus 1 FREE - N25,500">
               </div>
             </div>
 
             <div class="price-summary">
               <div>
                 <span class="label">Total Amount</span>
-                <span class="save-note" id="saveNote">You save ₦4,000 + Free Delivery</span>
+                <span class="save-note" id="saveNote">Free Delivery Included</span>
               </div>
-              <span class="value" id="totalPrice">₦38,500</span>
+              <span class="value" id="totalPrice">₦25,500</span>
             </div>
 
             <div class="delivery-urgency-note" id="deliveryUrgencyNote">
